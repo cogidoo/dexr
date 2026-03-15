@@ -8,6 +8,7 @@ The immediate need is simple: a child has many Pokemon cards, and the collection
 ## Where to start
 Read these files in order:
 - `docs/repo/vision.md`
+- `docs/repo/product-blueprint.md`
 - `docs/repo/current-state.md`
 - `docs/architecture/decisions.md`
 - `AGENTS.md`

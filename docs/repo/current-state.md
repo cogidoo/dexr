@@ -10,6 +10,9 @@ Project inception. No application code exists yet.
 - The core use case is cataloging a child’s Pokemon card collection.
 - The preferred input is phone-based scanning.
 - The product direction is mobile-first.
+- v1 should be a mobile-optimized web app.
+- v1 should prioritize single-card scanning over batch capture.
+- v1 should focus on inventory and identification before pricing.
 - The project owner wants durable repo-based context so knowledge does not disappear in chat history.
 - The project should live in a GitHub repository with regular, clearly scoped commits.
 - The project should use an explicit external-reviewer pass for meaningful work.
@@ -26,7 +29,7 @@ Project inception. No application code exists yet.
 - OpenAI Codex best practices: `https://developers.openai.com/codex/learn/best-practices/`
 
 ## Next recommended steps
-1. Write the initial product blueprint.
+1. Review and refine the initial product blueprint with the project owner.
 2. Decide the first technical slice for the MVP.
 3. Choose a stack for mobile scanning, backend, and storage.
 4. Model the core entities: collection, card, scan result, match candidate, and inventory item.

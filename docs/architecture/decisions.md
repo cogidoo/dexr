@@ -102,3 +102,19 @@ Use a dedicated review pass for meaningful project steps, guided by `docs/proces
 - Review becomes a first-class project activity rather than an informal afterthought.
 - Future agents can inspect past critiques and understand why changes were accepted or redirected.
 - Delivery may take slightly longer, but quality and traceability should improve.
+
+## ADR-0007: Start with a mobile web app centered on single-card inventory capture
+
+### Status
+Accepted
+
+### Context
+The project needs a strong phone experience because scanning is the main entry point. The project owner prefers a web app for v1, wants fast single-card capture prioritized over batch workflows, and wants the first release to emphasize inventory and identification rather than pricing.
+
+### Decision
+Build v1 as a mobile-optimized web app. Optimize the first scanning flow for one-card-at-a-time capture and confirmation. Treat pricing and valuation as follow-up features, not core v1 scope.
+
+### Consequences
+- The first architecture should favor fast web delivery and phone camera support.
+- UX should optimize for short repeatable scan-confirm-save loops.
+- Pricing data can still exist in the model later, but should not drive the first release.
