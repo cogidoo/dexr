@@ -40,7 +40,7 @@ Prioritize building a reliable cataloging and inventory workflow before advanced
 ## ADR-0003: Prefer assisted identification over brittle full automation
 
 ### Status
-Proposed
+Accepted
 
 ### Context
 The project needs a phone-based scan flow, but fully automatic image-based identification may be fragile, especially across varying card layouts, print variants, lighting conditions, and languages.
@@ -118,3 +118,19 @@ Build v1 as a mobile-optimized web app. Optimize the first scanning flow for one
 - The first architecture should favor fast web delivery and phone camera support.
 - UX should optimize for short repeatable scan-confirm-save loops.
 - Pricing data can still exist in the model later, but should not drive the first release.
+
+## ADR-0008: Keep v1 free of paid runtime dependencies
+
+### Status
+Accepted
+
+### Context
+The project owner does not want to spend money on the initial product runtime and does not want to rely on a ChatGPT Pro subscription as application infrastructure. That rules out an architecture that depends on paid hosted inference or paid backend services for the core v1 loop.
+
+### Decision
+Design v1 so it can run without paid runtime dependencies. Prefer local-first storage, browser-based OCR, and public card APIs over paid hosted AI services.
+
+### Consequences
+- v1 should avoid OpenAI as a required runtime dependency.
+- sync, hosted inference, and premium augmentation become future upgrades rather than initial requirements.
+- the first validation target is "usable and trustworthy on one device", not "fully synced and cloud-backed".
