@@ -29,6 +29,7 @@ Define a practical v1 architecture for a mobile-first web app that captures one 
 - primary source: `Pokemon TCG API`
 - secondary source: `TCGdex`, only where it improves recall or metadata coverage
 - keep a source-agnostic internal card model
+- do not embed a private `Pokemon TCG API` key in client-side code
 
 ### Identification pipeline
 Recommended v1 approach: `browser capture + on-device OCR + deterministic API matching + user confirmation`
@@ -82,6 +83,9 @@ Local-first architecture removes the need for paid backend services, auth setup,
 ## External APIs
 - query `Pokemon TCG API` first
 - optionally query `TCGdex` when the first pass fails or when multilingual metadata improves matching
+- for v1, prefer unauthenticated or low-volume usage patterns rather than exposing a secret API key in the browser
+- aggressively cache recent lookups and avoid noisy repeated searches during the scan loop
+- if public rate limits become a real bottleneck, add a lightweight server-side proxy later instead of leaking credentials client-side
 
 ## Hosting
 - static or low-cost web hosting is enough for v1
@@ -223,12 +227,14 @@ The second review raised three further product-operational points. They are inco
 - browser OCR may struggle with glare, blur, or tiny print
 - OCR quality may vary heavily across devices
 - public API rate limits can become a constraint if search is too noisy
+- client-side access means secret API keys must not be shipped in the browser
 - local-only storage increases the importance of export/import UX
 
 ## Future upgrade path
 If the local-first OCR path proves too weak, a later version can add:
 - optional account sync
 - optional server-side preprocessing
+- optional server-side API proxy for authenticated or cached card lookups
 - optional OpenAI-assisted hint extraction as a premium or advanced mode
 
 That should be treated as a later decision, not a v1 dependency.
@@ -238,6 +244,7 @@ Proceed with a `Next.js + IndexedDB + Tesseract.js + Pokemon TCG API` architectu
 
 ## References
 - Pokemon TCG API overview: https://docs.pokemontcg.io/
+- Pokemon TCG API authentication: https://docs.pokemontcg.io/getting-started/authentication/
 - Pokemon TCG API rate limits: https://docs.pokemontcg.io/getting-started/rate-limits/
 - TCGdex docs: https://tcgdex.dev/
 - MDN IndexedDB overview: https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API
