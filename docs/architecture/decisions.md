@@ -86,3 +86,19 @@ Keep the project in GitHub and prefer regular, well-scoped commits that each rep
 - The repo history becomes a second source of project memory.
 - Reviews and rollbacks become easier.
 - Work may pause briefly to package changes into clean commit boundaries.
+
+## ADR-0006: Use a separate external-reviewer pass for meaningful changes
+
+### Status
+Accepted
+
+### Context
+Implementation and review benefit from different mindsets. When the same pass both builds and validates a change, risks can be missed or rationalized away. The project owner wants regular review from an "external" agent perspective.
+
+### Decision
+Use a dedicated review pass for meaningful project steps, guided by `docs/process/code_review.md`, and persist important review outcomes when they add long-term value.
+
+### Consequences
+- Review becomes a first-class project activity rather than an informal afterthought.
+- Future agents can inspect past critiques and understand why changes were accepted or redirected.
+- Delivery may take slightly longer, but quality and traceability should improve.

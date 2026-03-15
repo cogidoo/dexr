@@ -12,6 +12,7 @@ Project inception. No application code exists yet.
 - The product direction is mobile-first.
 - The project owner wants durable repo-based context so knowledge does not disappear in chat history.
 - The project should live in a GitHub repository with regular, clearly scoped commits.
+- The project should use an explicit external-reviewer pass for meaningful work.
 - The project should be understandable to future agents and collaborators without prior conversation context.
 
 ## Working assumptions
