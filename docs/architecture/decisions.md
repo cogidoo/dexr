@@ -134,3 +134,19 @@ Design v1 so it can run without paid runtime dependencies. Prefer local-first st
 - v1 should avoid OpenAI as a required runtime dependency.
 - sync, hosted inference, and premium augmentation become future upgrades rather than initial requirements.
 - the first validation target is "usable and trustworthy on one device", not "fully synced and cloud-backed".
+
+## ADR-0009: Validate the scan-identify loop before building full inventory storage
+
+### Status
+Accepted
+
+### Context
+The largest remaining delivery risk is not page scaffolding or storage mechanics. It is whether a phone-friendly image capture flow plus OCR hints and API-backed candidate matching can identify real cards reliably enough for a non-expert user.
+
+### Decision
+Implement the first code slice as a narrow prototype of the scan-identify-confirm workflow. Start with a mobile web UI and mocked extraction or matching where needed so the user flow can be exercised before committing to full OCR, API integration, and local inventory persistence.
+
+### Consequences
+- early implementation effort stays focused on the highest-risk workflow
+- real OCR and API integration become the next technical step, not a later rewrite
+- inventory storage should follow only after identification quality is validated

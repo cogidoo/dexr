@@ -21,6 +21,12 @@ Build a mobile-first system for cataloging a child's Pokemon card collection by 
 - For Pokemon card domain/data guidance, verify against actual public APIs or official provider docs before documenting claims.
 - Record important review findings in repo files, not only in chat.
 
+## MCP And Docs Workflow
+- For `Next.js` framework questions in this repo, prefer the project-configured `next-devtools-mcp` server first.
+- For `React` framework questions, prefer `context7` with the official library ID `/reactjs/react.dev`.
+- For non-framework libraries, prefer `context7` unless the repo later adds a more authoritative dedicated MCP server.
+- When MCP-guided research changes a recurring practice or architectural choice, update the relevant repo doc in the same work step.
+
 ## Working Style
 - Default to small, testable steps.
 - Prefer an MVP that works with manual confirmation over a "fully automatic" system that is fragile.
