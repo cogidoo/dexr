@@ -45,3 +45,9 @@ References:
 
 ## Summary
 The revised architecture is directionally much stronger than the previous paid-runtime version. The main remaining risks are not about technology choice, but about operational resilience: recovery when OCR fails, clarity about network dependence, and protecting users from local-only data loss.
+
+## Disposition
+- OCR fallback finding: accepted and incorporated
+- network-dependence clarity finding: accepted and incorporated
+- local data-loss finding: accepted and incorporated
+- pricing-scope leak finding: accepted and incorporated

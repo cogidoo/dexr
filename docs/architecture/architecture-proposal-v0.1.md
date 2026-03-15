@@ -8,6 +8,7 @@ Define a practical v1 architecture for a mobile-first web app that captures one 
 - do not depend on ChatGPT Pro usage as application infrastructure
 - keep the first version usable on a phone
 - prioritize trustworthy identification over impressive but brittle automation
+- identification in v1 may require network access to public card APIs
 
 ## Recommended architecture
 
@@ -21,6 +22,8 @@ Define a practical v1 architecture for a mobile-first web app that captures one 
 - local-first storage in the browser using `IndexedDB`
 - no required sign-in in v1
 - add explicit export and import of collection data so the user can back up or move the collection manually
+- show a visible warning that collection data lives on this device unless exported
+- add backup reminders after meaningful catalog progress
 
 ### Card data sources
 - primary source: `Pokemon TCG API`
@@ -37,6 +40,8 @@ Recommended v1 approach: `browser capture + on-device OCR + deterministic API ma
 5. a ranking step returns likely candidates
 6. the user confirms the correct card
 7. the confirmed card is stored locally in the collection
+
+If OCR confidence is too low, the flow must offer a manual recovery path instead of only a blind retry.
 
 ## Why this is the recommended path
 
@@ -67,6 +72,7 @@ Local-first architecture removes the need for paid backend services, auth setup,
 - `IndexedDB` for structured client-side storage
 - store collection, inventory items, scan results, and cached match candidates locally
 - support export/import as JSON for backup and transfer
+- include lightweight backup UX in v1, not only raw export capability
 
 ## OCR
 - use `Tesseract.js` in the browser as the initial OCR engine
@@ -104,12 +110,16 @@ Local-first architecture removes the need for paid backend services, auth setup,
 - if that fails, search by name fragments and secondary clues
 - rank candidates by agreement between OCR hints and API data
 
-### Step E: confirmation
+### Step E: fallback when OCR is weak
+- allow retry with a new photo
+- allow manual search by name fragment
+- allow guided entry of visible collector number when readable by the user
+- keep this fallback simple enough for a non-expert parent
+### Step F: confirmation
 - show top candidates
 - highlight the evidence used for the match
 - let the user confirm, retry, or mark as unresolved
-
-### Step F: persistence
+### Step G: persistence
 - save confirmed inventory item locally
 - optionally save a lightweight scan record for later debugging
 - do not require long-term image retention for v1
@@ -193,6 +203,9 @@ For `dexr`, a wrong saved card is worse than a fast confirm step.
 - local-first collection storage
 - card photos are scan inputs, not first-class long-term inventory assets
 - `TCGdex` stays secondary until it proves concrete value
+- identification requires network access in v1
+- v1 must include a manual fallback path when OCR-based matching is weak
+- v1 must include a visible backup/export reminder because data is stored locally
 
 ## Review integration
 The previous review raised four important points. They are incorporated here as follows:
@@ -200,6 +213,11 @@ The previous review raised four important points. They are incorporated here as 
 - auth ambiguity: resolved by choosing no-login local-first v1
 - image-retention ambiguity: resolved by making photos temporary scan inputs in v1
 - TCGdex scope creep: resolved by making it secondary and optional
+
+The second review raised three further product-operational points. They are incorporated here as follows:
+- OCR failure recovery: resolved by adding an explicit manual fallback path
+- local-first versus offline ambiguity: resolved by explicitly stating that identification needs network access in v1
+- data-loss risk: resolved by requiring visible export and backup reminders in v1
 
 ## Risks
 - browser OCR may struggle with glare, blur, or tiny print

@@ -15,6 +15,9 @@ Project inception. No application code exists yet.
 - v1 should focus on inventory and identification before pricing.
 - v1 should avoid paid runtime dependencies.
 - ChatGPT Pro should not be treated as application infrastructure.
+- v1 identification will require network access to public card APIs.
+- v1 should include visible export/backup guidance because collection data is local-first.
+- v1 should include a manual fallback path when OCR-based scanning is weak.
 - The project owner wants durable repo-based context so knowledge does not disappear in chat history.
 - The project should live in a GitHub repository with regular, clearly scoped commits.
 - The project should use an explicit external-reviewer pass for meaningful work.
@@ -24,6 +27,7 @@ Project inception. No application code exists yet.
 - The first version should likely use OCR plus metadata matching, not depend on a single black-box card recognition API.
 - Public card databases and price sources should drive catalog data.
 - Domain knowledge must be documented in simple language as the project evolves.
+- Local-first is a storage strategy, not a guarantee of offline card identification.
 
 ## Confirmed external references
 - Pokemon TCG API docs: `https://docs.pokemontcg.io/`

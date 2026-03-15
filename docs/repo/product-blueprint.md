@@ -70,7 +70,6 @@ The first version does not need to:
 - card number
 - rarity
 - supertype or category where available
-- available market price fields when present
 
 ### 4. Basic collection summary
 - total cards cataloged
@@ -90,6 +89,7 @@ Pokemon cards have many similar-looking variants across sets, numbers, printings
 - match those clues against Pokemon card APIs
 - merge or compare multiple candidate sources when useful
 - preserve confidence and source data for later improvement
+- provide a manual recovery path when OCR is too weak to produce good candidates
 
 ## Key entities
 - collection
@@ -98,7 +98,6 @@ Pokemon cards have many similar-looking variants across sets, numbers, printings
 - scan result
 - match candidate
 - canonical card record
-- pricing snapshot
 
 ## Product risks
 - card identification may be harder than expected for worn, foreign-language, or badly lit cards
@@ -121,4 +120,7 @@ Pokemon cards have many similar-looking variants across sets, numbers, printings
 
 ## Open questions to resolve with the project owner
 - should children also be primary users, or mostly parents?
-- how important is offline or low-connectivity usage?
+
+## Current v1 operational assumptions
+- card identification in v1 requires network access to public card APIs
+- locally stored collection data should be exportable because v1 has no account sync
