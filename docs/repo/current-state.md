@@ -3,6 +3,9 @@
 ## Status
 Project inception. No application code exists yet.
 
+## Project name
+`dexr`
+
 ## What is already known
 - The core use case is cataloging a child’s Pokemon card collection.
 - The preferred input is phone-based scanning.

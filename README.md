@@ -1,6 +1,6 @@
-# poke_stock
+# dexr
 
-`poke_stock` is a planned system for cataloging a Pokemon card collection from a phone camera scan, identifying cards against real-world card databases, and building a trustworthy inventory that can later power pricing, organization, and deck-related features.
+`dexr` is a planned system for cataloging a Pokemon card collection from a phone camera scan, identifying cards against real-world card databases, and building a trustworthy inventory that can later power pricing, organization, and deck-related features.
 
 ## Why this project exists
 The immediate need is simple: a child has many Pokemon cards, and the collection needs to be captured into a usable digital inventory. The project owner is not a Pokemon card expert, so the system must also reduce domain confusion and guide decisions with clear explanations.

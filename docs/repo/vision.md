@@ -1,4 +1,4 @@
-# Vision
+# dexr Vision
 
 ## Problem
 A growing Pokemon card collection is hard to understand without a catalog. It is difficult to know what cards exist, whether there are duplicates, which cards may be valuable, and what can be used for play or deck building.
